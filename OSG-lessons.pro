@@ -4,3 +4,5 @@ CONFIG += ordered
 
 SUBDIRS += ./hello
 SUBDIRS += ./smart-pointers
+SUBDIRS += ./command-line
+SUBDIRS += ./notify
