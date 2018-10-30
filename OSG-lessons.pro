@@ -8,3 +8,4 @@ SUBDIRS += ./command-line
 SUBDIRS += ./notify
 SUBDIRS += ./shapes
 SUBDIRS += ./quad
+SUBDIRS += ./octahedron
