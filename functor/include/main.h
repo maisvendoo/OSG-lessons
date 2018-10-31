@@ -7,6 +7,7 @@
 #include    <osgViewer/Viewer>
 
 #include    <iostream>
-#include    <sstream>
+
+
 
 #endif

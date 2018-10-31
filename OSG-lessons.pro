@@ -11,4 +11,5 @@ SUBDIRS += ./quad
 SUBDIRS += ./octahedron
 SUBDIRS += ./tesselator
 SUBDIRS += ./functor
+SUBDIRS += ./teapot
 
