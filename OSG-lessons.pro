@@ -9,3 +9,6 @@ SUBDIRS += ./notify
 SUBDIRS += ./shapes
 SUBDIRS += ./quad
 SUBDIRS += ./octahedron
+SUBDIRS += ./tesselator
+SUBDIRS += ./functor
+
