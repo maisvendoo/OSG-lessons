@@ -12,7 +12,7 @@ win32 {
 
 unix {
 
-    LIB_DIRECTORY = /opt/osg/lib64
+    OSG_LIB_DIRECTORY = /opt/osg/lib64
     OSG_INCLUDE_DIRECTORY = /opt/osg/include
 }
 
