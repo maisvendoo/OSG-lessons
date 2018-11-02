@@ -13,3 +13,6 @@ SUBDIRS += ./tesselator
 SUBDIRS += ./functor
 SUBDIRS += ./groups
 SUBDIRS += ./transform
+SUBDIRS += ./switch
+SUBDIRS += ./lod
+SUBDIRS += ./proxynode
