@@ -12,3 +12,4 @@ SUBDIRS += ./octahedron
 SUBDIRS += ./tesselator
 SUBDIRS += ./functor
 SUBDIRS += ./groups
+SUBDIRS += ./transform
