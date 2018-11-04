@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-TARGET = proxynode
+TARGET = pagedlod
 
 DESTDIR = ../../bin
 

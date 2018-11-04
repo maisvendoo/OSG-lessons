@@ -16,3 +16,5 @@ SUBDIRS += ./transform
 SUBDIRS += ./switch
 SUBDIRS += ./lod
 SUBDIRS += ./proxynode
+SUBDIRS += ./pagedlod
+SUBDIRS += ./animswitch
