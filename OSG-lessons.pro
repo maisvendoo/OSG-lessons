@@ -18,3 +18,4 @@ SUBDIRS += ./lod
 SUBDIRS += ./proxynode
 SUBDIRS += ./pagedlod
 SUBDIRS += ./animswitch
+SUBDIRS += ./visitor
