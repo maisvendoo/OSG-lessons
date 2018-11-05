@@ -22,3 +22,4 @@ SUBDIRS += ./visitor
 SUBDIRS += ./hud
 SUBDIRS += ./loop
 SUBDIRS += ./composite
+SUBDIRS += ./multisampling

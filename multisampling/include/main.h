@@ -2,6 +2,6 @@
 #define		MAIN_H
 
 #include    <osgDB/ReadFile>
-#include    <osgViewer/CompositeViewer>
+#include    <osgViewer/Viewer>
 
 #endif
