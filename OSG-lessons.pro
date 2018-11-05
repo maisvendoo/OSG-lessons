@@ -21,3 +21,4 @@ SUBDIRS += ./animswitch
 SUBDIRS += ./visitor
 SUBDIRS += ./hud
 SUBDIRS += ./loop
+SUBDIRS += ./composite
