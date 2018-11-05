@@ -19,3 +19,5 @@ SUBDIRS += ./proxynode
 SUBDIRS += ./pagedlod
 SUBDIRS += ./animswitch
 SUBDIRS += ./visitor
+SUBDIRS += ./hud
+SUBDIRS += ./loop
