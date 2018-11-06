@@ -23,3 +23,4 @@ SUBDIRS += ./hud
 SUBDIRS += ./loop
 SUBDIRS += ./composite
 SUBDIRS += ./multisampling
+SUBDIRS += ./polygonmode
