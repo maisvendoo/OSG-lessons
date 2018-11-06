@@ -24,3 +24,5 @@ SUBDIRS += ./loop
 SUBDIRS += ./composite
 SUBDIRS += ./multisampling
 SUBDIRS += ./polygonmode
+SUBDIRS += ./inherit
+SUBDIRS += ./fog
