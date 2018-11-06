@@ -26,3 +26,4 @@ SUBDIRS += ./multisampling
 SUBDIRS += ./polygonmode
 SUBDIRS += ./inherit
 SUBDIRS += ./fog
+SUBDIRS += ./light
