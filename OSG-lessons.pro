@@ -27,3 +27,4 @@ SUBDIRS += ./polygonmode
 SUBDIRS += ./inherit
 SUBDIRS += ./fog
 SUBDIRS += ./light
+SUBDIRS += ./texture
