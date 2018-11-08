@@ -28,3 +28,4 @@ SUBDIRS += ./inherit
 SUBDIRS += ./fog
 SUBDIRS += ./light
 SUBDIRS += ./texture
+SUBDIRS += ./texrender
