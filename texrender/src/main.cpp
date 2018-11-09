@@ -103,7 +103,11 @@ int main(int argc, char *argv[])
 {
     (void) argc; (void) argv;
 
-    osg::ref_ptr<osg::Node> sub_model = osgDB::readNodeFile("../data/glider.osg");
+    osg::ref_ptr<osg::Node> sub_model = osgDB::readNodeFile("../data/cessna.osg");
+
+    osg::ref_ptr<osg::MatrixTransform> transform1 = new osg::MatrixTransform;
+    transform1->setMatrix(osg::Matrix::rotate(0.0, osg::Vec3(0.0f, 0.0f, 1.0f)));
+    transform1->addChild(sub_model.get());
 
     osg::ref_ptr<osg::Geode> model = new osg::Geode;
     model->addChild(createQuad(osg::Vec3(0.0f, 0.0f, 0.0f), 2.0f, 2.0f));
@@ -133,7 +137,7 @@ int main(int argc, char *argv[])
     camera->attach(osg::Camera::COLOR_BUFFER, texture.get());
 
     camera->setReferenceFrame(osg::Camera::ABSOLUTE_RF);
-    camera->addChild(sub_model.get());
+    camera->addChild(transform1.get());
 
     osg::ref_ptr<osg::Group> root = new osg::Group;
     root->addChild(model.get());
@@ -143,25 +147,22 @@ int main(int argc, char *argv[])
     viewer.setSceneData(root.get());
     viewer.setCameraManipulator(new osgGA::TrackballManipulator);
 
-    float delta = 0.1f;
-    float bias = 0.0f;
-    osg::Vec3 eye(0.0f, -1.0f, 1.0f);
+    float dist = 100.0f;
+    float alpha = 10.0f * 3.14f / 180.0f;
+    float phi = 0.0f;
+    float delta = -0.01f;
+
+    osg::Vec3 eye(0.0f, -dist * cosf(alpha), dist * sinf(alpha));
+    osg::Vec3 center(0.0f, 0.0f, 0.0f);
+    osg::Vec3 up(0.0f, 0.0f, -1.0f);
+    camera->setProjectionMatrixAsPerspective(30.0, static_cast<double>(tex_widht) / static_cast<double>(tex_height), 0.1, 1000.0);
+    camera->setViewMatrixAsLookAt(eye, center, up);
 
     while (!viewer.done())
     {
-        if (bias < -1.0f)
-            delta = 0.1f;
-        else
-        {
-            if (bias > 1.0f)
-                delta = -0.1f;
-        }
-
-        bias += delta;
-
-        camera->setViewMatrixAsLookAt(eye, osg::Vec3(), osg::Vec3(bias, 1.0f, 1.0f));
-
+        transform1->setMatrix(osg::Matrix::rotate(static_cast<double>(phi), osg::Vec3(0.0f, 0.0f, 1.0f)));
         viewer.frame();
+        phi += delta;
     }
     
     return 0;
