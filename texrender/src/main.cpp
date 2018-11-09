@@ -3,72 +3,6 @@
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-class FindTextureVisitor : public osg::NodeVisitor
-{
-public:
-
-    FindTextureVisitor( osg::Texture *tex )
-        : _texture(tex)
-        , _first_call(true)
-    {
-        setTraversalMode(osg::NodeVisitor::TRAVERSE_ALL_CHILDREN);
-    }
-
-    virtual void apply(osg::Node &node);
-    virtual void apply(osg::Geode &geode);
-
-    void replaceTexture(osg::StateSet *ss);
-
-protected:
-
-    osg::ref_ptr<osg::Texture>  _texture;
-    bool _first_call;
-};
-
-//------------------------------------------------------------------------------
-//
-//------------------------------------------------------------------------------
-void FindTextureVisitor::apply(osg::Node &node)
-{
-    replaceTexture(node.getStateSet());
-    traverse(node);
-}
-
-//------------------------------------------------------------------------------
-//
-//------------------------------------------------------------------------------
-void FindTextureVisitor::apply(osg::Geode &geode)
-{
-    replaceTexture(geode.getStateSet());
-
-    for (unsigned int i = 0; i < geode.getNumDrawables(); ++i)
-    {
-        replaceTexture(geode.getDrawable(i)->getStateSet());
-    }
-
-    traverse(geode);
-}
-
-//------------------------------------------------------------------------------
-//
-//------------------------------------------------------------------------------
-void FindTextureVisitor::replaceTexture(osg::StateSet *ss)
-{
-    if (ss)
-    {
-        osg::Texture *oldTexture = dynamic_cast<osg::Texture *>(ss->getTextureAttribute(0, osg::StateAttribute::TEXTURE));
-
-        if ( (oldTexture) || _first_call )
-        {
-            _first_call = false;
-            ss->setTextureAttribute(0, _texture.get());
-        }
-    }
-}
-
-//------------------------------------------------------------------------------
-//
-//------------------------------------------------------------------------------
 osg::Geometry *createQuad(const osg::Vec3 &pos, float w, float h)
 {
     osg::ref_ptr<osg::Vec3Array> vertices = new osg::Vec3Array;
@@ -121,11 +55,7 @@ int main(int argc, char *argv[])
     texture->setFilter(osg::Texture2D::MIN_FILTER, osg::Texture2D::LINEAR);
     texture->setFilter(osg::Texture2D::MAG_FILTER, osg::Texture2D::LINEAR);
 
-    model->getOrCreateStateSet()->setTextureAttributeAndModes(0, texture.get());
-
-    FindTextureVisitor ftv(texture.get());
-    if (model.valid())
-        model->accept(ftv);
+    model->getOrCreateStateSet()->setTextureAttributeAndModes(0, texture.get());    
 
     osg::ref_ptr<osg::Camera> camera = new osg::Camera;
     camera->setViewport(0, 0, tex_widht, tex_height);
@@ -147,6 +77,12 @@ int main(int argc, char *argv[])
     viewer.setSceneData(root.get());
     viewer.setCameraManipulator(new osgGA::TrackballManipulator);
 
+#ifdef __WIN32__
+    viewer.setUpViewOnSingleScreen(0);
+#endif
+
+    camera->setProjectionMatrixAsPerspective(30.0, static_cast<double>(tex_widht) / static_cast<double>(tex_height), 0.1, 1000.0);
+
     float dist = 100.0f;
     float alpha = 10.0f * 3.14f / 180.0f;
     float phi = 0.0f;
@@ -155,7 +91,6 @@ int main(int argc, char *argv[])
     osg::Vec3 eye(0.0f, -dist * cosf(alpha), dist * sinf(alpha));
     osg::Vec3 center(0.0f, 0.0f, 0.0f);
     osg::Vec3 up(0.0f, 0.0f, -1.0f);
-    camera->setProjectionMatrixAsPerspective(30.0, static_cast<double>(tex_widht) / static_cast<double>(tex_height), 0.1, 1000.0);
     camera->setViewMatrixAsLookAt(eye, center, up);
 
     while (!viewer.done())
@@ -164,6 +99,6 @@ int main(int argc, char *argv[])
         viewer.frame();
         phi += delta;
     }
-    
+
     return 0;
 }
