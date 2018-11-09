@@ -29,3 +29,4 @@ SUBDIRS += ./fog
 SUBDIRS += ./light
 SUBDIRS += ./texture
 SUBDIRS += ./texrender
+SUBDIRS += ./callbackswitch
