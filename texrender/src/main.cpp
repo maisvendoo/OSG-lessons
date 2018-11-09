@@ -76,22 +76,20 @@ int main(int argc, char *argv[])
     osgViewer::Viewer viewer;
     viewer.setSceneData(root.get());
     viewer.setCameraManipulator(new osgGA::TrackballManipulator);
-
-#ifdef __WIN32__
     viewer.setUpViewOnSingleScreen(0);
-#endif
 
     camera->setProjectionMatrixAsPerspective(30.0, static_cast<double>(tex_widht) / static_cast<double>(tex_height), 0.1, 1000.0);
 
     float dist = 100.0f;
     float alpha = 10.0f * 3.14f / 180.0f;
-    float phi = 0.0f;
-    float delta = -0.01f;
 
     osg::Vec3 eye(0.0f, -dist * cosf(alpha), dist * sinf(alpha));
     osg::Vec3 center(0.0f, 0.0f, 0.0f);
     osg::Vec3 up(0.0f, 0.0f, -1.0f);
     camera->setViewMatrixAsLookAt(eye, center, up);
+
+    float phi = 0.0f;
+    float delta = -0.01f;
 
     while (!viewer.done())
     {
