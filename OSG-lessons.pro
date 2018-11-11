@@ -30,3 +30,4 @@ SUBDIRS += ./light
 SUBDIRS += ./texture
 SUBDIRS += ./texrender
 SUBDIRS += ./callbackswitch
+SUBDIRS += ./animquad
