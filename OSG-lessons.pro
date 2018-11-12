@@ -31,3 +31,4 @@ SUBDIRS += ./texture
 SUBDIRS += ./texrender
 SUBDIRS += ./callbackswitch
 SUBDIRS += ./animquad
+SUBDIRS += ./animcessna
