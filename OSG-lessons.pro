@@ -33,3 +33,5 @@ SUBDIRS += ./callbackswitch
 SUBDIRS += ./animquad
 SUBDIRS += ./animcessna
 SUBDIRS += ./transparency
+SUBDIRS += ./fading-in
+SUBDIRS += ./spotlight
