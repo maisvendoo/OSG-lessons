@@ -35,3 +35,4 @@ SUBDIRS += ./animcessna
 SUBDIRS += ./transparency
 SUBDIRS += ./fading-in
 SUBDIRS += ./spotlight
+SUBDIRS += ./drive-cessna
