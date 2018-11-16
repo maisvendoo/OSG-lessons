@@ -57,8 +57,8 @@ osgDB::ReaderWriter::ReadResult ReaderWriterPMD::readNode(
         geom->addPrimitiveSet(polygon.get());
     }
 
-    osgUtil::SmoothingVisitor smoother;
-    smoother.smooth(*geom);
+    geom->setNormalArray(mesh.normals.get());
+    geom->setNormalBinding(osg::Geometry::BIND_PER_PRIMITIVE_SET);
 
     osg::ref_ptr<osg::Geode> geode = new osg::Geode;
     geode->addDrawable(geom.get());
@@ -100,6 +100,7 @@ pmd_mesh_t ReaderWriterPMD::parsePMD(std::istream &stream) const
             }
 
             mesh.faces.push_back(face);
+            mesh.normals->push_back(mesh.calcFaceNormal(face));
         }
     }
 
