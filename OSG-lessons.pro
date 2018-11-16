@@ -38,3 +38,4 @@ SUBDIRS += ./spotlight
 SUBDIRS += ./drive-cessna
 SUBDIRS += ./timer
 SUBDIRS += ./traits
+SUBDIRS += ./plugin
