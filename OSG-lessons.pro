@@ -40,3 +40,6 @@ SUBDIRS += ./timer
 SUBDIRS += ./traits
 SUBDIRS += ./plugin
 SUBDIRS += ./keyanimation
+SUBDIRS += ./dmd
+SUBDIRS += ./qt-widgets
+
