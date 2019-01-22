@@ -142,7 +142,4 @@ std::vector<std::string> ReaderWriterPMD::parseLine(const std::string &line) con
     return tokens;
 }
 
-//------------------------------------------------------------------------------
-//
-//------------------------------------------------------------------------------
 REGISTER_OSGPLUGIN( pmd, ReaderWriterPMD )
