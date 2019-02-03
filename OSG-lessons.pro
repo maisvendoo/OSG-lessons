@@ -41,5 +41,5 @@ SUBDIRS += ./traits
 SUBDIRS += ./plugin
 SUBDIRS += ./keyanimation
 SUBDIRS += ./dmd
-SUBDIRS += ./qt-widgets
-
+SUBDIRS += ./qt-signals
+SUBDIRS += ./qviewerwidget

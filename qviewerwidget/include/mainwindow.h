@@ -42,6 +42,8 @@ private slots:
 
     void open();
 
+    void clean();
+
     void quit();
 };
 

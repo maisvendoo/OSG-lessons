@@ -27,7 +27,10 @@ MainWindow::MainWindow(QWidget *parent)
     timer.start(40);
 
     connect(ui->actionQuit, &QAction::triggered, this, &MainWindow::quit);
+    connect(ui->actionClean, &QAction::triggered, this, &MainWindow::clean);
     connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::open);
+
+    this->setWindowTitle("QViewerWidget example");
 }
 
 //------------------------------------------------------------------------------
@@ -76,6 +79,19 @@ void MainWindow::open()
 
     osg::ref_ptr<osg::Node> model = osgDB::readNodeFile(path.toStdString());
     scene->addChild(model.get());
+}
+
+//------------------------------------------------------------------------------
+//
+//------------------------------------------------------------------------------
+void MainWindow::clean()
+{
+    osg::Group *scene = qviewer->getScene();
+
+    if (scene == nullptr)
+        return;
+
+    scene->removeChildren(0, scene->getNumChildren());
 }
 
 //------------------------------------------------------------------------------

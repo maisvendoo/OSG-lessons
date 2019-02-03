@@ -1,11 +1,10 @@
 TEMPLATE = app
 
-TARGET = qt-widgets
+TARGET = qt-signals
 
 QT += core
 QT += gui
 QT += widgets
-QT += opengl
 
 DESTDIR = ../../bin
 
@@ -24,7 +23,6 @@ win32 {
         LIBS += -L$$OSG_LIB_DIRECTORY -losgDBd
         LIBS += -L$$OSG_LIB_DIRECTORY -lOpenThreadsd
         LIBS += -L$$OSG_LIB_DIRECTORY -losgGAd
-        LIBS += -L$$OSG_LIB_DIRECTORY -losgQt5d
 
     } else {
 
@@ -33,7 +31,6 @@ win32 {
         LIBS += -L$$OSG_LIB_DIRECTORY -losgDB
         LIBS += -L$$OSG_LIB_DIRECTORY -lOpenThreads
         LIBS += -L$$OSG_LIB_DIRECTORY -losgGA
-        LIBS += -L$$OSG_LIB_DIRECTORY -losgQt5
     }
 
     INCLUDEPATH += $$OSG_INCLUDE_DIRECTORY
@@ -50,7 +47,6 @@ unix {
         LIBS += -losgDBd
         LIBS += -lOpenThreadsd
         LIBS += -losgGAd
-        LIBS += -losgQt5d
 
     } else {
 
@@ -59,7 +55,6 @@ unix {
         LIBS +=  -losgDB
         LIBS +=  -lOpenThreads
         LIBS +=  -losgGA
-        LIBS +=  -losgQt5
     }
 }
 
