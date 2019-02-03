@@ -16,7 +16,7 @@
 #define     QT_EVENTS_H
 
 #include    <osgGA/GUIEventHandler>
-#include    <QApplication>
+#include    <QCoreApplication>
 
 //------------------------------------------------------------------------------
 //
